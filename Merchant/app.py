@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
+
+# Ensure script runs in the correct directory
+os.chdir(os.path.dirname(__file__))
 
 csv_files = [
     'Bannerghatta Road (P2) Plaza', 'Kadathanamale Toll Plaza', 'Kanakapura Road (P3) Plaza', 
@@ -10,6 +14,7 @@ csv_files = [
     'ATTIBELLE', 'Nelamangala Toll Plaza', 'Devanahalli Toll Plaza', 
     'Hoskote Toll Plaza', 'Kaniminike Toll Plaza'
 ]
+
 st.markdown(
     """
     <style>
@@ -23,6 +28,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 st.title("📊 Vehicle Count Analysis")
 st.subheader("Select a Toll Plaza")
 
@@ -36,6 +42,9 @@ for i, file in enumerate(csv_files):
 
 @st.cache_data
 def load_data(file_path):
+    if not os.path.exists(file_path):
+        st.error(f"❌ File '{file_path}' not found. Please ensure it is present in the deployment environment.")
+        return None
     try:
         df = pd.read_csv(file_path)
         df['initiated_time'] = pd.to_datetime(df['initiated_time'].str[-5:], format='%H:%M', errors='coerce')
@@ -44,8 +53,8 @@ def load_data(file_path):
         grouped_data = df.groupby('time_group').size().reset_index(name='vehicle_count')
         grouped_data['time_group'] = grouped_data['time_group'].dt.strftime('%H:%M')
         return grouped_data
-    except FileNotFoundError:
-        st.error(f"❌ File {file_path} not found. Please check the filename.")
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
         return None
 
 def plot_graph(grouped_data, title):
@@ -76,6 +85,7 @@ if st.button("🚦 Overall Bangalore Insights", use_container_width=True):
     overall_data = load_data(overall_file)
     if overall_data is not None:
         plot_graph(overall_data, "Overall Vehicle Count Per 30-Minute Interval in Bangalore")
+
 if st.button("For Tabular Insights", use_container_width=True):
     df = pd.read_csv("Bangalore_1Day_NETC.csv")
     toll_data = df['merchant_name'].value_counts().reset_index()
