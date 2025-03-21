@@ -26,7 +26,7 @@ button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
 st.markdown(tabs_font_css, unsafe_allow_html=True)
 
 # Create tabs
-tab1, tab2 = st.tabs(["📊 Traffic Insights", "📹 Video Playback"])
+tab1, tab2, tab3 = st.tabs(["📊 Data Analysis", "📹 Video Playback", "⏳ Peak Hour Prediction"])
 
 with tab1:
     st.subheader("Select a Toll Plaza")
@@ -101,5 +101,23 @@ with tab2:
     unsafe_allow_html=True
     )
 
+with tab3:
+    st.subheader("⏳ Peak Hour Prediction")
+    
+    st.write("""
+    Here we analyze historical traffic data to predict peak hours at various toll plazas. 
+    Below are insights based on real-time trends and historical patterns. Using synthetic data.
+    """)
+
+    # Display three images with descriptions
+    # col1, col2, col3 = st.columns(3)
 
     
+    st.image("predicted_hour_test.png", caption="Peak Traffic Trend Over Test Data",use_container_width=True)
+    st.write("This graph compares actual (green) and predicted (red) peak traffichours over time, highlighting forecast accuracy and variations. The shaded regionrepresents the confidence interval, helping visualize prediction reliability.")
+
+    st.image("predicted_hour_weekly.png", caption="Hourly Traffic Distribution",use_container_width=True)
+    st.write("This graph compares actual (blue) and predicted (red) peak traffichours from March 10-16, 2024. It highlights forecast accuracy and variations inpeak traffic trends over the week.")
+
+    st.image("predicyed_hour_traffic.png", caption="Predicted Peak Hours",use_container_width=True)
+    st.write("This graph compares actual (blue) and predicted (red) traffic peakhours on holidays throughout the year. It highlights forecast accuracy andseasonal traffic variations.")
