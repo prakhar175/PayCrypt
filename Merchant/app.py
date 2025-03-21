@@ -26,7 +26,7 @@ button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
 st.markdown(tabs_font_css, unsafe_allow_html=True)
 
 # Create tabs
-tab1, tab2, tab3 = st.tabs(["📊 Data Analysis", "📹 Video Playback", "⏳ Peak Hour Prediction"])
+tab1, tab2, tab3 = st.tabs(["📊 Data Analysis", "📹 Yolo Demonstration", "⏳ Peak Hour Prediction"])
 
 with tab1:
     st.subheader("Select a Toll Plaza")
