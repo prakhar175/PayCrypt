@@ -35,7 +35,7 @@ To set up and run the PayCrypt project locally, follow these steps:
    - Explore the contents of the `Merchant` directory.
    - Execute relevant scripts to test the functionality.
 
-5. **Contributors**:
+## Contributors:
    - Prakhar Kothari
    - Shreeyans Arora
    - Mohit Bhalotia
@@ -52,4 +52,4 @@ Contributions are welcome! If you'd like to contribute:
 
 ## License
 
-This project does not specify a license. For any inquiries regarding usage and contributions, please contact the repository owner at [GitHub](https://github.com/prakhar175), [GitHub](https://github.com/shreeyans2808), [GitHub](https://github.com/MohitBhalotia) or [GitHub](https://github.com/SumeetKumarr).
+This project does not specify a license. For any inquiries regarding usage and contributions, please contact the repository owner at [Prakhar Kothari](https://github.com/prakhar175), [Shreeyans Arora](https://github.com/shreeyans2808), [Mohit Bhalotia](https://github.com/MohitBhalotia) or [Sumeet Kumar](https://github.com/SumeetKumarr).
